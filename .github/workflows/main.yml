@@ -32,16 +32,16 @@ jobs:
         run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Diagnose Gradle project
-  run: |
-    echo "=== FILES ==="
-    find . -maxdepth 4 -type f | sort
-    echo "=== PROJECTS ==="
-    gradle projects
-    echo "=== APP TASKS ==="
-    gradle :app:tasks --all
+        run: |
+          echo "=== FILES ==="
+          find . -maxdepth 4 -type f | sort
+          echo "=== PROJECTS ==="
+          gradle projects
+          echo "=== APP TASKS ==="
+          gradle :app:tasks --all
 
-- name: Build APK
-  run: gradle :app:assembleDebug --stacktrace
+      - name: Build APK
+        run: gradle :app:assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
